@@ -1,0 +1,29 @@
+.detail-div{
+    width: 100%;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 4rem;
+}
+
+.details-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 60vw; 
+    height: 50vh;
+    background: rgb(228, 226, 226);
+    color: black;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+   
+    transition: transform 0.2s ease-in-out;
+  }
+  
+
+  .detail-card div{
+    text-align: justify;
+  }
