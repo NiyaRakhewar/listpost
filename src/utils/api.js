@@ -11,7 +11,12 @@ export const createPost = async (post) => {
     return response.data;
   };
 
-
+  export const fetchAllPosts = async () => {
+    const response = await axios.get(
+      `https://jsonplaceholder.typicode.com/posts`
+    );
+    return response.data;
+  };
 export const fetchPosts = async (start, limit) => {
   const response = await axios.get(
     `https://jsonplaceholder.typicode.com/posts?_start=${start}&_limit=${limit}`

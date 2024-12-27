@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react";
-import { fetchPosts } from "../utils/api";
+import { fetchAllPosts, fetchPosts } from "../utils/api";
 import { PostCard } from "../components/PostCard";
 import PostsListPlaceholder from "../components/PostsListPlaceholder";
 import "./../styles/PostList.css"
 import { useNavigate } from "react-router-dom";
 const PostsList = () => {
   const [posts, setPosts] = useState([]);
+  const [allPosts, setAllPosts] = useState([]);
   const [start, setStart] = useState(0);
   const limit = 10;
   const navigate = useNavigate();
@@ -17,6 +18,14 @@ const PostsList = () => {
     };
     loadPosts();
   }, [start]);
+
+  useEffect(() => {
+    const allPosts = async () => {
+      const data = await fetchAllPosts();
+      setAllPosts(data);
+    };
+    allPosts();
+  }, []);
 
  
 
@@ -34,7 +43,7 @@ const PostsList = () => {
       <button disabled={start === 0} onClick={() => setStart(start - limit)}>
         Previous
       </button>
-      <button onClick={() => setStart(start + limit)}>Next</button>
+      <button disabled={posts.length === 0 || start === allPosts.length - limit } onClick={() => setStart(start + limit)}>Next</button>
       </div>
     </div>
   );
